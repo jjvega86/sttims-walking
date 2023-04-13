@@ -75,8 +75,6 @@ function Leaderboard(props: PropTypes) {
                     </tr>
                   );
                 })}
-
-                {/* Add more rows here */}
               </tbody>
             </table>
           </div>

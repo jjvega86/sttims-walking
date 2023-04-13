@@ -22,7 +22,7 @@ export default async function Home() {
   return (
     <main className="flex min-h-screen flex-col items-center p-24">
       <h1 className="text-3xl font-bold mb-9">
-        St. Timothy's Signal Mountain Strava Club
+        St. Timothy&apos;s Signal Mountain Strava Club
       </h1>
       <Leaderboard data={data?.length ? data : undefined} />
     </main>
