@@ -1,5 +1,14 @@
 import { Activity, LeaderRow } from "@/types/types";
 
+function formatTime(totalMinutes: number) {
+  const hours = Math.floor(totalMinutes / 60);
+  const minutes = totalMinutes % 60;
+  const formattedHours = hours < 10 ? `0${hours}` : hours;
+  const formattedMinutes =
+    minutes < 10 ? `0${minutes.toFixed(0)}` : minutes.toFixed(0);
+  return `${formattedHours} : ${formattedMinutes}`;
+}
+
 export function processActivities(
   activities: { [x: string]: any; Date: string | number | Date }[]
 ) {
@@ -13,7 +22,7 @@ export function processActivities(
       date: activity.Date,
       type: activity["Activity Type"],
       totalMiles: parseFloat(activity["Total Miles"]),
-      totalTime: parseFloat(activity["Total Time"]),
+      totalTime: activity["Total Time"],
     });
     index += 1;
   });
@@ -37,11 +46,11 @@ export function calculateAllTimeLeaders(activities: Array<Activity>) {
       0
     );
     let totalTimeRaw = filteredActivities.reduce(
-      (acc, activity) => acc + activity.totalTime,
+      (acc, activity) => acc + parseFloat(activity.totalTime),
       0
     );
 
-    let totalTime = parseFloat(totalTimeRaw.toFixed(2));
+    let totalTime = formatTime(totalTimeRaw);
 
     leaders.push({
       id: index + 1,
