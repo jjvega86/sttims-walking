@@ -13,4 +13,5 @@ export type LeaderRow = {
   name: string;
   totalMiles: number;
   totalTime: number;
+  totalActivities: number;
 };

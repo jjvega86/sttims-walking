@@ -48,6 +48,7 @@ export function calculateAllTimeLeaders(activities: Array<Activity>) {
       name: leader,
       totalTime,
       totalMiles,
+      totalActivities: filteredActivities.length,
     });
   });
 

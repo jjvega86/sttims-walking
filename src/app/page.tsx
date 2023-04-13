@@ -22,7 +22,8 @@ export default async function Home() {
       <h1 className="text-3xl font-bold mb-9">Hello, St Timothy's</h1>
       {data?.map((leader) => (
         <p key={leader.id} className="text-xl mb-2">
-          {leader.name} {leader.totalMiles} miles {leader.totalTime} minutes
+          {leader.name} {leader.totalMiles} miles {leader.totalTime} minutes{" "}
+          {leader.totalActivities} activities
         </p>
       ))}
     </main>
