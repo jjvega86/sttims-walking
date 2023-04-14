@@ -46,7 +46,7 @@ export default function Tabs(props: Props) {
               "ring-white ring-opacity-60 ring-offset-2 ring-offset-blue-400 focus:outline-none focus:ring-2"
             )}
           >
-            <h1>This Week</h1>
+            <Leaderboard data={calculateAllTimeLeaders(props.data, "week")} />
           </Tab.Panel>
           <Tab.Panel
             className={classNames(
@@ -54,7 +54,7 @@ export default function Tabs(props: Props) {
               "ring-white ring-opacity-60 ring-offset-2 ring-offset-blue-400 focus:outline-none focus:ring-2"
             )}
           >
-            <h1>This Month</h1>
+            <Leaderboard data={calculateAllTimeLeaders(props.data, "month")} />
           </Tab.Panel>
           <Tab.Panel
             className={classNames(
@@ -62,7 +62,9 @@ export default function Tabs(props: Props) {
               "ring-white ring-opacity-60 ring-offset-2 ring-offset-blue-400"
             )}
           >
-            <Leaderboard data={calculateAllTimeLeaders(props.data)} />
+            <Leaderboard
+              data={calculateAllTimeLeaders(props.data, "all-time")}
+            />
           </Tab.Panel>
         </Tab.Panels>
       </Tab.Group>
