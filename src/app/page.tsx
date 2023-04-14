@@ -1,9 +1,5 @@
-import {
-  processActivities,
-  calculateAllTimeLeaders,
-} from "@/helpers/activities";
+import { processActivities } from "@/helpers/activities";
 
-import Leaderboard from "@/components/Leaderboard";
 import Tabs from "@/components/Tabs";
 
 async function fetchActivities() {
@@ -13,8 +9,7 @@ async function fetchActivities() {
     });
     let json = await response.json();
     let data = processActivities(json);
-    let leaders = calculateAllTimeLeaders(data);
-    return leaders;
+    return data;
   } catch (error) {
     console.log(error);
   }

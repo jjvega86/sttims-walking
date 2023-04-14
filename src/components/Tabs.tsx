@@ -2,12 +2,15 @@
 import { useState } from "react";
 import { Tab } from "@headlessui/react";
 
-import { LeaderRow } from "@/types/types";
+import { LeaderRow, Activity } from "@/types/types";
 import Leaderboard from "@/components/Leaderboard";
 
+import { calculateAllTimeLeaders } from "@/helpers/activities";
+
 type Props = {
-  data?: Array<LeaderRow>;
+  data?: Array<Activity>;
 };
+
 function classNames(...classes: Array<string>) {
   return classes.filter(Boolean).join(" ");
 }
@@ -59,7 +62,7 @@ export default function Tabs(props: Props) {
               "ring-white ring-opacity-60 ring-offset-2 ring-offset-blue-400"
             )}
           >
-            <Leaderboard data={props.data} />
+            <Leaderboard data={calculateAllTimeLeaders(props.data)} />
           </Tab.Panel>
         </Tab.Panels>
       </Tab.Group>

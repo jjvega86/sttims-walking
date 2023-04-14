@@ -11,7 +11,7 @@ export type Activity = {
 export type LeaderRow = {
   id: number;
   name: string;
-  totalMiles: number;
-  totalTime: string;
-  totalActivities: number;
+  totalMiles: number | undefined;
+  totalTime: string | undefined;
+  totalActivities: number | undefined;
 };

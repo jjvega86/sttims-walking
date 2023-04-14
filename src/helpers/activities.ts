@@ -30,34 +30,36 @@ export function processActivities(
   return finalActivities;
 }
 
-export function calculateAllTimeLeaders(activities: Array<Activity>) {
-  let leaders: Array<LeaderRow> = [];
-  let refinedLeaders = activities.map((activity) => {
+export function calculateAllTimeLeaders(
+  activities: Array<Activity> | undefined
+) {
+  let leaders: Array<LeaderRow> | undefined = [];
+  let refinedLeaders = activities?.map((activity) => {
     return activity.firstName + " " + activity.lastName;
   });
   let uniqueLeaders = Array.from(new Set(refinedLeaders));
 
   uniqueLeaders.forEach((leader, index) => {
-    let filteredActivities = activities.filter((activity) => {
+    let filteredActivities = activities?.filter((activity) => {
       return activity.firstName + " " + activity.lastName === leader;
     });
-    let totalMiles = filteredActivities.reduce(
+    let totalMiles = filteredActivities?.reduce(
       (acc, activity) => acc + activity.totalMiles,
       0
     );
-    let totalTimeRaw = filteredActivities.reduce(
+    let totalTimeRaw = filteredActivities?.reduce(
       (acc, activity) => acc + parseFloat(activity.totalTime),
       0
     );
 
-    let totalTime = formatTime(totalTimeRaw);
+    let totalTime = formatTime(totalTimeRaw ? totalTimeRaw : 0);
 
-    leaders.push({
+    leaders?.push({
       id: index + 1,
       name: leader,
       totalTime,
       totalMiles,
-      totalActivities: filteredActivities.length,
+      totalActivities: filteredActivities?.length,
     });
   });
 
